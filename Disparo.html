@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boton {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            margin: 10px;
+            border-radius: 50%;
+        }
+
+        #barra {
+            height: 20px;
+            width: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="panel">0</h1>
+    <div class="boton" id="btnDisparar"></div>
+    <div class="boton" id="btnRafaga"></div>
+    <div class="boton" id="btnRecargar"></div>
+    <div id="barra"></div>
+    <script>
+        "use strict";
+        const vpanel = document.getElementById("panel");
+        const vbtnDisparar = document.getElementById("btnDisparar");
+        const vbtnRafaga = document.getElementById("btnRafaga");
+        const vbtnRecargar = document.getElementById("btnRecargar");
+        const vbarra = document.getElementById("barra");
+
+        let balas = 100;
+
+        const actualizar = () => {
+            vpanel.innerText = balas;
+            vbarra.style.width = balas * 5 + "px";
+        };
+
+        actualizar();
+
+        vbtnDisparar.addEventListener("click", () => {
+            if (balas > 0) {
+                balas--;
+                actualizar();
+            }
+        });
+
+        vbtnRafaga.addEventListener("click", () => {
+            balas -= 10;
+            if (balas < 0) {
+                balas = 0;
+            }
+            actualizar();
+        });
+
+        vbtnRecargar.addEventListener("click", () => {
+            balas += 25;
+            if (balas > 200) {
+                balas = 200;
+            }
+            actualizar();
+        });
+
+    </script>
+</body>
+
+</html>
